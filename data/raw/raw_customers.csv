@@ -1,0 +1,6 @@
+customer_id,first_name,last_name,email,phone,creation_date
+1,Alice,Johnson,alice.johnson@email.com,123-456-7890,2021-01-10
+2,Bob,Smith,bob.smith@email.com,321-654-0987,2021-05-15
+3,Charlie,Brown,charlie.brown@email.com,456-789-0123,2021-06-20
+4,David,Williams,david.williams@email.com,654-321-9870,2021-02-25
+5,Eva,Green,eva.green@email.com,789-012-3456,2021-04-15

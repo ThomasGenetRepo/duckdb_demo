@@ -1,0 +1,5 @@
+product,category,unit_price,stock_quantity
+Apple,Fruit,2.5,100
+Banana,Fruit,0.5,150
+Orange,Fruit,1.5,80
+Grapes,Fruit,3.0,50
