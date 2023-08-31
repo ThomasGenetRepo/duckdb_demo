@@ -1,0 +1,50 @@
+version: '3'
+services:
+  etl_flow:
+    build:
+      context: .
+      dockerfile: ./src/etl_flow/Dockerfile
+    volumes:
+      - ./data:/data
+    depends_on:
+      - db_host
+      - dagster-daemon 
+    ports:
+      - "3000:3000"
+    environment:
+      DAGSTER_PG_USERNAME: username
+      DAGSTER_PG_PASSWORD: password
+      DAGSTER_PG_HOST: db_host
+      DAGSTER_PG_DB: db_name
+
+  dagster-daemon:
+    build:
+      context: .
+      dockerfile: ./src/etl_flow/Dockerfile
+    command: "dagster-daemon run"
+    depends_on:
+      - db_host
+
+  db_host:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db_name
+    ports:
+      - "5432:5432"
+  
+  dashboard:
+    build:
+      context: .
+      dockerfile: ./src/dashboard/Dockerfile
+    volumes:
+      - ./data:/data
+    depends_on:
+      - db_host  # Make sure this container starts only after db_host
+    ports:
+      - "8501:8501"
+
+volumes:
+  data_volume:
+    external: false

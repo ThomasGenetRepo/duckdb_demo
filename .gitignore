@@ -1,1 +1,3 @@
-venv/**
+venv/*
+src/etl_flow/__pycache__/*
+src/etl_flow/tmpjlmjpwlt/*
